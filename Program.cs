@@ -7,7 +7,8 @@ while (true)
     Console.WriteLine("ADRESSBOKEN");
     Console.WriteLine("1. Visa kontakter");
     Console.WriteLine("2. Lägg till kontakt");
-    Console.WriteLine("3. Avsluta");
+    Console.WriteLine("3. Ta bort alla kontakter");
+    Console.WriteLine("4. Avsluta");
 
     char choice = GetChar("Välj: ");
     if (choice == '1')
@@ -26,7 +27,12 @@ while (true)
         string name = Console.ReadLine();
         AddContact(name);
     }
-    else if (choice == '3')
+    else if(choice == '3')
+    {
+        Array.Clear(names);
+        Array.Resize(ref names, names.Length - names.Length);
+    }
+    else if (choice == '4')
     {
         Console.WriteLine("AVSLUTAR...");
         Environment.Exit(0);
@@ -48,7 +54,6 @@ void AddContact(string name)
     names = newNamesArray;
     names[^1] = name;
 }
-
 static char GetChar(string prompt)
 {
     Console.Write(prompt);
